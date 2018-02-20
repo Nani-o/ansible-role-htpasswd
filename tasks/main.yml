@@ -1,0 +1,28 @@
+---
+- name: Install python passlib
+  package:
+    name: python-passlib
+    state: latest
+
+- name: Create htpasswd folder
+  file:
+    path: "{{ item.path | dirname }}"
+    owner: "{{ item.owner | default(ansible_user_uid) }}"
+    group: "{{ item.group | default(ansible_user_gid) }}"
+    state: directory
+  with_items: "{{ htpasswd_files }}"
+  when: "item.create_folder | default(False)"
+
+- name: Creating htpasswd files
+  htpasswd:
+    path: "{{ item.0.path }}"
+    name: "{{ item.1.name }}"
+    password: "{{ item.1.password }}"
+    owner: "{{ item.0.owner | default(ansible_user_uid) }}"
+    group: "{{ item.0.group | default(ansible_user_gid) }}"
+    mode: "{{ item.0.mode | default('0644') }}"
+  with_subelements:
+    - "{{ htpasswd_files }}"
+    - users
+  loop_control:
+    label: "{{ item.0.path }}"
