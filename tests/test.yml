@@ -15,7 +15,7 @@
       - path: /tmp/htpasswd2
         users:
           - name: user
-            pasword: secure
+            password: secure
   roles:
     - role-to-test
   post_tasks:
