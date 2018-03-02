@@ -20,9 +20,9 @@
     - role-to-test
   post_tasks:
    - name: Include vars
-      include_vars:
-        dir: "vars"
-        files_matching: "{{ ansible_os_family }}.yml"
+     include_vars:
+       dir: "vars"
+       files_matching: "{{ ansible_os_family }}.yml"
         
     - name: Install htpasswd
       package: "{{ htpasswd_package }}"
