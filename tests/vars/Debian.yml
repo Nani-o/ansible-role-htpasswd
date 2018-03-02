@@ -1,0 +1,2 @@
+---
+htpasswd_package: apache2-utils
