@@ -1,0 +1,26 @@
+---
+dist: trusty
+language: python
+python: "2.7"
+
+sudo: true
+
+env:
+  - lxd_container_alias: centos/7/amd64
+  - lxd_container_alias: centos/6/amd64
+  - lxd_container_alias: ubuntu/18.04/amd64
+  - lxd_container_alias: ubuntu/16.04/amd64
+  - lxd_container_alias: ubuntu/14.04/amd64
+  - lxd_container_alias: debian/9/amd64
+  - lxd_container_alias: debian/8/amd64
+  - lxd_container_alias: debian/7/amd64
+
+install:
+  # Cloning testing template
+  - sudo mkdir /etc/ansible
+  - sudo chown -R "${USER}:" /etc/ansible
+  - git clone https://github.com/Nani-o/ansible-template-role-test /etc/ansible
+
+script:
+  # Run tests.
+  - bash /etc/ansible/test.sh
