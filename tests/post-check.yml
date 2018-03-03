@@ -1,0 +1,16 @@
+---
+- hosts: container
+  vars_files:
+    - "vars/main.yml"
+    - "vars/{{ ansible_os_family }}.yml"
+  tasks:       
+    - name: Install htpasswd
+      package:
+        name: "{{ htpasswd_package }}"
+        state: latest
+
+    - name: Check passwords
+      command: htpasswd -vb "{{ item.0.path }}" "{{ item.1.name }}" "{{ item.1.password }}"
+      with_subelements:
+        - "{{ htpasswd_files }}"
+        - users
