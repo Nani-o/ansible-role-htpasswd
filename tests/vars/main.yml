@@ -2,8 +2,6 @@
 htpasswd_files:
   - path: /tmp/test/htpasswd1
     create_folder: yes
-    owner: nobody
-    group: nobody
     mode: "0444"
     users:
       - name: user1
