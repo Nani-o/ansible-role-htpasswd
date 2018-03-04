@@ -8,11 +8,11 @@
       package:
         name: "{{ htpasswd_package }}"
         state: latest
-      when: "ansible_distribution_release not 'wheezy'"
+      when: "ansible_distribution_release != 'wheezy'"
 
     - name: Check passwords
       command: htpasswd -vb "{{ item.0.path }}" "{{ item.1.name }}" "{{ item.1.password }}"
       with_subelements:
         - "{{ htpasswd_files }}"
         - users
-      when: "ansible_distribution_release not 'wheezy'"
+      when: "ansible_distribution_release != 'wheezy'"

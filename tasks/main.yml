@@ -1,5 +1,5 @@
 ---
-- name: Install python passlib
+- name: Install epel release
   package:
     name: epel-release
     state: latest
