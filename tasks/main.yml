@@ -1,9 +1,9 @@
 ---
 - name: Install epel release
-  package:
-    name: epel-release
-    state: latest
-  when: "ansible_os_family == 'RedHat'"
+  yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
 
 - name: Install python passlib
   package:
