@@ -8,7 +8,9 @@
       package:
         name: "{{ htpasswd_package }}"
         state: latest
-      when: "ansible_distribution_release != 'wheezy'"
+      when:
+        - "ansible_distribution_release != 'wheezy'"
+        - "ansible_distribution + ansible_distribution_major_version != 'CentOS6'"
 
     - name: Check passwords
       command: htpasswd -vb "{{ item.0.path }}" "{{ item.1.name }}" "{{ item.1.password }}"
