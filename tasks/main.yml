@@ -4,6 +4,8 @@
     name: epel
     description: EPEL YUM repo
     baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    gpgkey: http://mir01.syntis.net/epel//RPM-GPG-KEY-EPEL-6
+  when: "ansible_os_family == 'RedHat'"
 
 - name: Install python passlib
   package:
