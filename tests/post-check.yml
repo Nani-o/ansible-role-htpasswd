@@ -17,4 +17,6 @@
       with_subelements:
         - "{{ htpasswd_files }}"
         - users
-      when: "ansible_distribution_release != 'wheezy'"
+      when:
+        - "ansible_distribution_release != 'wheezy'"
+        - "ansible_distribution + ansible_distribution_major_version != 'CentOS6'"
