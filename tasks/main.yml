@@ -3,7 +3,7 @@
   package:
     name: epel-release
     state: latest
-  when: "ansible_os_family == ´RedHat'"
+  when: "ansible_os_family == 'RedHat'"
 
 - name: Install python passlib
   package:
