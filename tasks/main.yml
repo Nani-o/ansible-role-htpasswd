@@ -9,7 +9,7 @@
 
 - name: Install python passlib
   package:
-    name: python-passlib
+    name: python3-passlib
     state: latest
 
 - name: Create htpasswd folder
