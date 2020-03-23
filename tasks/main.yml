@@ -9,7 +9,7 @@
 
 - name: Install python passlib
   package:
-    name: "{{ ansible_python.executable.split()[-1] }}-passlib"
+    name: "{{ ansible_python.executable.split('/')[-1] }}-passlib"
     state: latest
 
 - name: Create htpasswd folder
